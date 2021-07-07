@@ -1,3 +1,4 @@
+## for test: nabeatsu game
 try:
     num = int(input("1000以下の数字を半角で入力してください"))
     if num % 3 == 0:
