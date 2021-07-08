@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block content %}
+<h3>Hello</h3>
+Hello, {{ name }}!!<form action="/judge" method="POST">
+    What's your favorite number?<br>
+    <input type="text" name="number">
+    <input type="submit" value="OK">
+</form>
+<br><br>
+<form action="/">
+    <input type="submit" value="Go back">
+</form>
+{% endblock %}

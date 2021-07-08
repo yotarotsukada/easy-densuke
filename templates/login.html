@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+{% block content %}
+<h3>Login</h3>
+<form action="/hello" method="POST">
+    What's your name?<br>
+    <input type="text" name="name" placeholder="Enter your name here">
+    <input type="submit" value="OK">
+</form>
+{% endblock %}
