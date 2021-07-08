@@ -1,14 +1,14 @@
 {% extends "layout.html" %}
 {% block content %}
-<h3>Play</h3>
-<p>Hello{{ name }}!!<br>
-What's your favorite number?</p>
+<h3>Error</h3>
+<p>What's your favorite number?<br>
+Please input using only half-width numbers.</p>
 <form action="/result" method="POST">
     <input type="text" name="number">
     <input type="submit" value="OK">
 </form>
 <br><br>
 <form action="/">
-    <input type="submit" value="Quit">
+    <input type="submit" value="Go back">
 </form>
 {% endblock %}

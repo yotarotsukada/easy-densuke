@@ -7,20 +7,28 @@ app = Flask(__name__)
 def login():
     return render_template('login.html', title='login')
 
-
-@app.route('/hello', methods=['POST'])
+@app.route('/hello', methods=['GET', 'POST'])
 def hello():
-    name = request.form['name']
+    if request.method == 'POST':
+        name = request.form['name']
+        if name == '':
+            name = 'guest user'
+        name = ', ' + name
+    if request.method == 'GET':
+            name = ''
     return render_template('hello.html', title='hello', name=name) 
 
-@app.route('/judge', methods=['POST'])
+@app.route('/result', methods=['POST'])
 def judge():
-    number = int(request.form['number'])
+    try:
+        number = int(request.form['number'])
+    except ValueError:
+        return render_template('error.html', title='error')
     if (number % 3 == 0) or ('3' in str(number)):
-        res = '(*＾∀ﾟ)'
+        result = '(*＾∀ﾟ) NABE-ATSU!!'
     else:
-        res = '(-_-)'
-    return render_template('nabeatsu.html', res=res)
+        result = '(-_-) nah'
+    return render_template('result.html', result=result)
 
 
 if __name__ == '__main__':

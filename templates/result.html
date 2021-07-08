@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block content %}
+<h3>Result</h3>
+<p>{{ result }}</p>
+<br><br>
+<form action="/hello">
+    <input type="submit" value="Go back">
+</form>
+<br>
+<form action="/">
+    <input type="submit" value="Quit">
+</form>
+{% endblock %}

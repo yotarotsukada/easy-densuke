@@ -1,0 +1,45 @@
+body {
+    margin: 0;
+    background-color: #e6e6e6;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#header {
+    position: relative;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    background-color: #025955;
+}
+
+h1 {
+    margin: 0;
+    padding: 30px;
+    color: #ffffff;
+}
+
+#wrapper {
+    padding: 20px;
+    padding-left: 15%;
+}
+
+h3 {
+    color: #025955;
+}
+
+p {
+    color: #313131;
+}
+
+#footer {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    height: 100px;
+    text-align: center;
+    background-color: #433520;
+}
+
+#footer p {
+    color: #ffffffaf;
+}
