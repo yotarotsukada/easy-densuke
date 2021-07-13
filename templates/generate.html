@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>日程登録</h2>
+<form action="/result" method="POST">
+    <label>
+        <p>開始日 (必須)<br>
+        <input type="date" class="date" name="start" value="{{ start_value }}" required></p>
+    </label>
+    <label>
+        <p>終了日 (必須)<br>
+        <input type="date" class="date" name="end" value="{{ end_value }}" required></p>
+    </label>
+    <label>
+        <p>平日の候補時間帯<br>
+        <textarea name="weekday" rows="4" class="candidates" placeholder="候補ごとに改行で区切ってください"></textarea></p>
+    </label>
+    <label>
+        <p>土日・祝日の候補時間帯<br>
+        <textarea name="weekend" rows="4" class="candidates" placeholder="候補ごとに改行で区切ってください"></textarea></p>
+    </label>
+        <input type="submit" value="作成する">
+</form>
+{% endblock %}

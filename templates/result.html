@@ -1,13 +1,19 @@
 {% extends "layout.html" %}
 {% block content %}
-<h3>Result</h3>
-<p>{{ result }}</p>
-<br><br>
-<form action="/hello">
-    <input type="submit" value="Go back">
-</form>
-<br>
-<form action="/">
-    <input type="submit" value="Quit">
-</form>
+<h2>実行結果</h2>
+{% if num < 0 %}
+    <p>終了日は開始日以降の日付にしてください。</p>
+{% else %}
+    <p>
+        {% for time in result%}
+            {% if time != '' %}
+                {{ time }}<br>
+            {% endif %}
+        {% endfor %}
+    </p>
+    <p id="url">
+        伝助の作成はこちら：<a href="https://densuke.biz/event" target="_blank">https://densuke.biz/event</a>
+    </p>
+{% endif %}
+<form action="/"><input type="submit" value="戻る" onclick="return goBack();"></form>
 {% endblock %}
