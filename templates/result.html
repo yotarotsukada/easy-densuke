@@ -3,17 +3,24 @@
 <h2>実行結果</h2>
 {% if num < 0 %}
     <p>終了日は開始日以降の日付にしてください。</p>
+    <form action="/"><input type="submit" value="戻る"></form>
 {% else %}
-    <p>
-        {% for time in result%}
-            {% if time != '' %}
-                {{ time }}<br>
-            {% endif %}
-        {% endfor %}
-    </p>
-    <p id="url">
-        伝助の作成はこちら：<a href="https://densuke.biz/event" target="_blank">https://densuke.biz/event</a>
-    </p>
+    <div class="content">
+        <p>
+            新規イベント作成：<br>
+            <a href="https://densuke.biz/event" target="_blank">https://densuke.biz/event</a><br>
+            <input type="submit" value="クリップボードにコピー" onclick="copy();">
+        </p>
+    </div>
+    <div class="content">
+        <p id="result">
+            {% for time in result%}
+                {% if time != '' %}
+                    {{ time }}<br>
+                {% endif %}
+            {% endfor %}
+        </p>
+    </div>
+    <form action="/"><input type="submit" value="戻る" onclick="return goBack();"></form>
 {% endif %}
-<form action="/"><input type="submit" value="戻る" onclick="return goBack();"></form>
 {% endblock %}

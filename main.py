@@ -1,10 +1,16 @@
 # coding: utf-8
 
-from flask import Flask, render_template, request
+from flask import Flask, send_from_directory, render_template, request
+import os
 import datetime as d
+import function
 import jpholiday
 
 app = Flask(__name__)
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static/img'), 'favicon.ico', )
 
 @app.route('/')
 def generate():
@@ -22,7 +28,7 @@ def view_contact():
     return render_template('contact.html', title='お問い合わせ - 伝助時短プログラム')
 
 @app.route('/result', methods = ['GET', 'POST'])
-def make_list():
+def get_result():
     if request.method == 'GET':
         return generate()
     
@@ -31,20 +37,16 @@ def make_list():
     dt_start = d.date.fromisoformat(start)
     dt_end = d.date.fromisoformat(end)
     num = (dt_end - dt_start).days + 1
-    
-    list_weekday = request.form['weekday'].strip().split('\r\n')
-    list_weekend = request.form['weekend'].strip().split('\r\n')
-    list_weekday = [s for s in list_weekday if s != ''] #空の要素を除く
-    list_weekend = [s for s in list_weekend if s != ''] #空の要素を除く
+
+    check_data = request.form.getlist('check')
+    print(check_data)
+    flag_weekday = 'weekday' in check_data
+    flag_weekend = 'weekend' in check_data
+    list_weekday = function.make_list(flag_weekday, request.form['list-weekday'])
+    list_weekend = function.make_list(flag_weekend, request.form['list-weekend'])
     len_wd = len(list_weekday)
     len_we = len(list_weekend)
-    if len_wd == 0: #候補時間帯がなかった場合の処理
-        list_weekday.append('')
-        len_wd = 1
-    if len_we == 0: #候補時間帯がなかった場合の処理
-        list_weekend.append('')
-        len_we = 1
-    
+
     result = []
     dt_date = dt_start
     dic_day = {
@@ -72,7 +74,7 @@ def make_list():
             for i in range(len_wd):
                 result.append(date + '(' + day + ')' + list_weekday[i])
         dt_date += d.timedelta(days=1) #最後にdt_dateを1日後にする
-    
+
     return render_template('result.html', title='実行結果 - 伝助時短プログラム', result=result, num=num)
 
 
