@@ -1,4 +1,8 @@
 # 伝助時短プログラム
+
+## アプリ
+[こちら](https://easy-densuke.herokuapp.com/)からどうぞ。
+
 ## 使用技術
 * server: Heroku
 * backend: Python
