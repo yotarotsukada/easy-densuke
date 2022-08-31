@@ -35,7 +35,14 @@
         </nav>
     </div>
     <div id="wrapper">
-        ※重要なお知らせ
+        <section id="notification">
+            <div onclick="closeModal(event.target.parentNode)">X</div>
+            <h1>重要なお知らせ</h1>
+            <p>
+                いつもご利用ありがとうございます。
+                運営の都合により、本サービスは2022年11月16日よりURLをお引越しします。ブックマークしている方は再登録をお願いいたします。
+            </p>
+        </section>
         {% block content %}
         <!-- ここにメインコンテンツを書く -->
         {% endblock %}

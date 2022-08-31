@@ -16,3 +16,17 @@ const copy = () => {
   document.body.removeChild(textarea);
   alert("結果をクリップボードにコピーしました！");
 };
+
+const closeModal = (parent) => {
+  parent.innerHTML = "";
+  showNotification = false;
+  sessionStorage.setItem("modalClosed", false);
+};
+
+let modalClosed = sessionStorage.getItem("modalClosed");
+if (modalClosed) {
+  const regexp = /help.*/;
+  if (!regexp.test(location.href.split("/").at(-1))) {
+    closeModal(document.getElementById("notification"));
+  }
+}
