@@ -35,6 +35,21 @@
         </nav>
     </div>
     <div id="wrapper">
+        <section id="notification">
+            <div>
+                <h1>重要なお知らせ</h1>
+                <p>
+                    いつもご利用ありがとうございます。
+                </p>
+                <p>
+                    リニューアルに伴い、本サービスは<a href="https://easy-densuke.vercel.app/">新しいURL</a>へとお引越ししました。ブックマークしている方はお手数ですが、再登録をお願いいたします。
+                </p>
+                <p>
+                    なお、<b>2022年11月28日</b>以降、旧ページの動作は保証されなくなりますのでご注意ください。引き続き「伝助時短プログラム」をよろしくお願いいたします。
+                </p>
+                <div id="closeButton" onclick="closeModal(event.target.parentNode.parentNode)"></div>
+            </div>
+        </section>
         {% block content %}
         <!-- ここにメインコンテンツを書く -->
         {% endblock %}
