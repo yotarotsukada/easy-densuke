@@ -2,6 +2,7 @@
 {% block content %}
 <h2>日程登録</h2>
 <form action="/result" method="POST">
+    {{ form.csrf_token }}
     <div class="content">
         <label>
             開始日 (必須)<br>
